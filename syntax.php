@@ -1,36 +1,23 @@
 <?php
 
-function receiverClient ($clientName)
-{
-	echo "Olá " . $clientName;
+/* fopen */
+
+// text.txt - empty
+$directory = "test.txt";
+$string = "He4rtDevs best community!" . PHP_EOL;
+
+// $buffer = fopen($directory, "a+");
+$buffer = fopen($directory, "r");
+
+// fwrite($buffer, $string);
+// fwrite($buffer, "it's really");
+
+//echo feof($buffer); // checking if file its open on last line 
+
+// fread - check line bytes 
+while (!feof($buffer)) {
+	echo fread($buffer, 8192) . "leave the prime";
 }
-function receiverClientTwo ($name = 'Luffy')
-{
-	echo "Hello " . $name;
-}
-receiverClient('Joyboy');
-receiverClientTwo();
 
-// Typing
-function greetings (string $name,  bool $welcome = false)
-{
-	if ($welcome) {
-		echo "Hello " . $name;
-	} else {
-		echo "Get the fuck out of here" . $name;
-	}
-}
-greetings('Joyboy', true);
-
-// Anonymous func
-
-$evenNumbers = array_filter([1,2,3,4], function($number)
-	{
-		return $number % 2 == 0;
-	});
-
-$sampleFunc = function($name)
-{
-	printf("best community of developers is the: %s\r\n", $name);
-};
-$sampleFunc('He4rtDevs');
+echo `cat test.txt` . PHP_EOL;
+fclose($buffer);
